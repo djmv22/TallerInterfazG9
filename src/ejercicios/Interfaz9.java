@@ -5,6 +5,8 @@
  */
 package ejercicios;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author DanielDeJesus
@@ -27,21 +29,138 @@ public class Interfaz9 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtMITarjeta = new javax.swing.JTextField();
+        txtMFTarjeta = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtCostoLlamada = new javax.swing.JTextField();
+        cmdCalcular = new javax.swing.JButton();
+        cmdBorrar = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        jLabel1.setText("Ejercicio Número 9: Determinar el costo de la llamada");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
+
+        jLabel2.setText("Monto inicial de la tarjeta:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
+
+        jLabel3.setText("Monto final de la tarjeta:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, -1, -1));
+
+        txtMITarjeta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMITarjetaKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txtMITarjeta, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 60, -1));
+
+        txtMFTarjeta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMFTarjetaKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txtMFTarjeta, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 60, -1));
+
+        jLabel4.setText("Costo de la llamada:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, -1, -1));
+
+        txtCostoLlamada.setEditable(false);
+        jPanel1.add(txtCostoLlamada, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 60, -1));
+
+        cmdCalcular.setText("Calcular");
+        cmdCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdCalcularActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmdCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, -1, -1));
+
+        cmdBorrar.setText("Borrar");
+        cmdBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdBorrarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmdBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtMITarjetaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMITarjetaKeyTyped
+        char c=evt.getKeyChar();
+        
+        if(!Character.isDigit(c)){
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtMITarjetaKeyTyped
+
+    private void txtMFTarjetaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMFTarjetaKeyTyped
+        char c=evt.getKeyChar();
+        
+        if(!Character.isDigit(c)){
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtMFTarjetaKeyTyped
+
+    private void cmdBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBorrarActionPerformed
+        txtMITarjeta.setText("");
+        txtMFTarjeta.setText("");
+        txtCostoLlamada.setText("");
+        
+        txtMITarjeta.requestFocusInWindow();
+    }//GEN-LAST:event_cmdBorrarActionPerformed
+
+    private void cmdCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCalcularActionPerformed
+        String res;
+        double mITarjeta,mFTarjeta,op,op2,resta;
+        
+        if(txtMITarjeta.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Digite el monto inicial de la tarjeta", "Error", JOptionPane.ERROR_MESSAGE);
+            txtMITarjeta.requestFocusInWindow();
+        }
+        else if(txtMFTarjeta.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Digite el monto final de la tarjeta", "Error", JOptionPane.ERROR_MESSAGE);
+            txtMFTarjeta.requestFocusInWindow();
+        }
+        else {
+            
+            mITarjeta = Double.parseDouble(txtMITarjeta.getText());
+            mFTarjeta = Double.parseDouble(txtMFTarjeta.getText());
+            
+            resta = mITarjeta - mFTarjeta;
+            op = resta * 0.20;
+            op2 = resta + op;
+            
+            res = String.valueOf(op2);
+            txtCostoLlamada.setText(res);
+        
+            
+            
+        }
+        
+        
+        
+    }//GEN-LAST:event_cmdCalcularActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +198,15 @@ public class Interfaz9 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cmdBorrar;
+    private javax.swing.JButton cmdCalcular;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField txtCostoLlamada;
+    private javax.swing.JTextField txtMFTarjeta;
+    private javax.swing.JTextField txtMITarjeta;
     // End of variables declaration//GEN-END:variables
 }
